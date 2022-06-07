@@ -31,22 +31,44 @@
 # COMMAND ----------
 
 for num in range(1, 101):
-  if (num % 5 == 0) and (num % 3 == 0):
-    print("FizzBuzz")
-  elif num % 5 == 0:
-    print("Buzz")
-  elif num % 3 == 0:
-    print("Fizz")
-  else:
-    print(num)
+    if (num % 5 == 0) and (num % 3 == 0):
+        print("FizzBuzz")
+    elif num % 5 == 0:
+        print("Buzz")
+    elif num % 3 == 0:
+        print("Fizz")
+    else:
+        print(num)
 
 # COMMAND ----------
 
 # TODO
-def FILL_IN
-  assert FILL_IN
-  
-  if FILL_IN
+def fizz_buzz(number: int) -> str:
+    """Function to return Fizz when the number
+    is multiple of 3, Buzz when the number is multiple of 5,
+    FizzBuzz when the number is multiple of 3 and 5. If the number
+    is not multiple of 3 or 5, the function returns the number.
+
+    Parameters
+    ----------
+    number : int
+        Number to be checked.
+
+    Returns
+    -------
+    str
+        Return Fizz, Buzz, FizzBuzz or the number depending on conditions of number multiple.
+    """
+    assert type(number) == int, f"""Expected number as int, but found "{type(number)}"."""
+    
+    if (number % 5 == 0) and (number % 3 == 0):
+        return "FizzBuzz"
+    elif number % 5 == 0:
+        return "Buzz"
+    elif number % 3 == 0:
+        return "Fizz"
+    else:
+        return str(number)
 
 # COMMAND ----------
 
@@ -55,50 +77,71 @@ def FILL_IN
 # COMMAND ----------
 
 expected = "Fizz"
-result = fizzBuzz(3)
+result = fizz_buzz(3)
 assert type(result) == str, f"Expected actual to be of type str, but found {type(result)}."
 assert result == expected, f"""Expected "{expected}", but found "{result}"."""
 
 expected = "Buzz"
-result = fizzBuzz(5)
+result = fizz_buzz(5)
 assert type(result) == str, f"Expected actual to be of type str, but found {type(actresultual)}."
 assert result == expected, f"""Expected "{expected}", but found "{result}"."""
 
 expected = "FizzBuzz"
-result = fizzBuzz(15)
+result = fizz_buzz(15)
 assert type(result) == str, f"Expected actual to be of type str, but found {type(result)}."
 assert result == expected, f"""Expected "{expected}", but found "{result}"."""
 
 expected = "7"
-result = fizzBuzz(7)
+result = fizz_buzz(7)
 assert type(result) == str, f"Expected actual to be of type str, but found {type(result)}."
 assert result == expected, f"""Expected "{expected}", but found "{result}"."""
 
 # COMMAND ----------
 
-# MAGIC %md Using the asserts in the previous command as a template, create a test function that calls **`fizzBuzz()`** for the following sequence of numbers: 0, 1, 2, 3, 5, and 15
-# MAGIC 0. Implement the method **`testFizzBuzz()`**
+# MAGIC %md Using the asserts in the previous command as a template, create a test function that calls **`fizz_buzz()`** for the following sequence of numbers: 0, 1, 2, 3, 5, and 15
+# MAGIC 0. Implement the method **`test_fizz_buzz()`**
 # MAGIC 0. Iterate over the list **`test_numbers`** and **`expectations`**</br>
 # MAGIC Hint: Without introducing any new constructs, you can employ a **`range`**
-# MAGIC 0. Call **`fizzBuzz()`** with the specified value
+# MAGIC 0. Call **`fizz_buzz()`** with the specified value
 # MAGIC 0. Assert that the result is of type **`str`**, as seen above
 # MAGIC 0. Assert that the result matches the expected value, as seen above
 
 # COMMAND ----------
 
 #TODO
-def FILL_IN        # Declare the function testFizzBuzz
-  result = FILL_IN # Call fizzBizz() with the specified value
-  assert FILL_IN   # Assert that the result is of type str
-  assert FILL_IN   # Assert that the result matches the expected value
+def test_fizz_buzz(number: int, expected: str):
+    """Function to test function fizz_buzz.
+    
+    Parameters
+    ----------
+    number : int
+        Number to be checked.
+    expected : str
+        Result expected from running function fizz_buzz
+        with the number specified.
+    
+    Returns
+    -------
+        Prints if the test passed or raise an error in case of failure.
+    """
+    result = fizz_buzz(number)
+    
+    assert type(result) == str, \
+        f"""The fizz_buzz output is expected as string, but it was found "{type(result)}"."""
+    assert result == expected, \
+        f"""Result expected is "{expected}", but the obtained is "{result}" """
+    
+    print("Test passed!")
 
 test_numbers = [0, 1, 2, 3, 5, 15]
 expectations = ["FizzBuzz", "1", "2", "Fizz", "Buzz", "FizzBuzz"]
 
-for FILL_IN
-  num = FILL_IN
-  expected = FILL_IN
-  testFizzBuzz(FILL_IN)
+for i in range(len(test_numbers)):
+    num = test_numbers[i]
+    expected = expectations[i]
+    
+    test_fizz_buzz(number=num, expected=expected)
+
 
 # COMMAND ----------
 
