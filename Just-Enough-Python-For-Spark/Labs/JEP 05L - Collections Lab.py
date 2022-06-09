@@ -23,14 +23,35 @@
 
 # COMMAND ----------
 
+from typing import List
+
+# COMMAND ----------
+
 # TODO
-def FILL_IN(input)
-  output = {}          # Initialize an empty dictionary
-  
-  for item in input:   # Iterate over the list of values
-    FILL_IN            # Update the dictionary
-      
-  return output        # Return the dictionary
+def item_count(list_of_values: List) -> dict:
+    """Function to count the number of times an item is in a list.
+
+    Parameters
+    ----------
+    list_of_values : List
+        List of values to be analyzed.
+
+    Returns
+    -------
+    dict
+        Dictionary where the keys are the elements of the list and
+        the value is the number of times it repeats.
+    """
+    dict_output = {}
+    
+    for item in list_of_values:
+        if str(item) not in dict_output:
+            dict_output[str(item)] = 1
+        else:
+            dict_output[str(item)] += 1
+        
+    return dict_output
+    
 
 # COMMAND ----------
 
