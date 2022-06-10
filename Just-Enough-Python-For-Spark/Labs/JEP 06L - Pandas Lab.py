@@ -21,7 +21,15 @@
 
 # COMMAND ----------
 
+import pandas as pd
+
+# COMMAND ----------
+
 # TODO
+list_data = [list(range(1,4)), list(range(4,7)), list(range(7,10))]
+list_columns = ["one", "two", "three"]
+pdf = pd.DataFrame(data=list_data, columns=list_columns)
+pdf
 
 # COMMAND ----------
 
@@ -31,6 +39,7 @@
 # COMMAND ----------
 
 # TODO
+pdf[["three"]]
 
 # COMMAND ----------
 
@@ -40,6 +49,7 @@
 # COMMAND ----------
 
 # TODO
+pdf["three"]
 
 # COMMAND ----------
 
@@ -49,6 +59,7 @@
 # COMMAND ----------
 
 # TODO
+pdf["two"][1]
 
 # COMMAND ----------
 
@@ -58,6 +69,8 @@
 # COMMAND ----------
 
 # TODO
+pdf["row_sum"] = pdf.sum(axis=0).values
+pdf
 
 # COMMAND ----------
 
