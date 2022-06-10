@@ -29,7 +29,13 @@
 
 # COMMAND ----------
 
+import pandas as pd
+
+# COMMAND ----------
+
 # TODO
+pdf_airbnb = pd.read_csv("/dbfs/databricks-datasets/learning-spark-v2/sf-airbnb/sf-airbnb.csv")
+pdf_airbnb.head(5)
 
 # COMMAND ----------
 
@@ -43,6 +49,9 @@
 # COMMAND ----------
 
 # TODO
+list_columns = ["beds", "bedrooms", "bathrooms", "property_type", "neighbourhood_cleansed"]
+df = pdf_airbnb[list_columns]
+df.head(5)
 
 # COMMAND ----------
 
@@ -52,6 +61,7 @@
 # COMMAND ----------
 
 # TODO
+df.sort_values(by=["bedrooms"], ascending=False)
 
 # COMMAND ----------
 
@@ -73,6 +83,7 @@ df[df.isna().any(axis=1)]
 # COMMAND ----------
 
 # TODO
+df = df.fillna(0)
 
 # COMMAND ----------
 
@@ -83,6 +94,7 @@ df[df.isna().any(axis=1)]
 # COMMAND ----------
 
 # TODO
+df["bathrooms"].mean()
 
 # COMMAND ----------
 
@@ -94,7 +106,8 @@ df[df.isna().any(axis=1)]
 # COMMAND ----------
 
 # TODO
-financial_district_df = <FILL_IN>
+financial_district_df = df.loc[df['neighbourhood_cleansed']=='Financial District']
+financial_district_df.head(5)
 
 # COMMAND ----------
 
@@ -108,6 +121,7 @@ financial_district_df = <FILL_IN>
 # COMMAND ----------
 
 # TODO
+financial_district_df.groupby("property_type")["neighbourhood_cleansed"].count().sort_values(ascending=False).plot(kind="bar", title="Most common property types in Financial District Airbnb listing")
 
 # COMMAND ----------
 
